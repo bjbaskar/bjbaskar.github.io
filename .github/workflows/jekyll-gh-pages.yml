@@ -49,5 +49,5 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v1
         with:
-          FOLDER: out
+          FOLDER: out/
           CLEAN: true
