@@ -1,4 +1,7 @@
 /** @type {import('next').NextConfig} */
+
+const isProd = process.env.NODE_ENV === "production";
+
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
@@ -6,6 +9,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  assetPrefix: isProd ? "/bjbaskar.github.io/" : "",
 };
 
 module.exports = nextConfig;
