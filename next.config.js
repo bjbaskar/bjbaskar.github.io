@@ -9,7 +9,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  assetPrefix: isProd ? "/bjbaskar.github.io/" : "",
+  assetPrefix: isProd ? "/" : "",
 };
 
 module.exports = nextConfig;
