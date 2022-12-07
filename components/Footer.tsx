@@ -20,8 +20,8 @@ export const ExternalLink = ({ href, children }: ExternalLinkProps) => (
 export default function Footer() {
   return (
     <div className="bg-gray-800 mt-8 pt-8 w-full">
-      <footer className="flex flex-col justify-center items-start max-w-2xl mx-auto w-full mb-8">
-        <div className="w-full grid grid-cols-1 gap-4 pb-16 sm:grid-cols-3">
+      <footer className="flex flex-col max-w-2xl mx-auto w-full mb-8 justify-center items-center">
+        <div className="w-full grid grid-cols-1 gap-4 pb-16 sm:grid-cols-3 text-center">
           <div className="flex flex-col gap-4">
             <Link
               href="/"
@@ -59,13 +59,6 @@ export default function Footer() {
             <ExternalLink href="https://stackoverflow.com/users/2075914/bjbaskar">
               Stack Overflow
             </ExternalLink>
-
-            <Link
-              href="/contact"
-              className="text-gray-500 hover:text-gray-600 transition"
-            >
-              Guestbook
-            </Link>
 
             <Link
               href="/patterns"

@@ -10,7 +10,7 @@ const Aboutme: React.FC = () => {
       <img
         data-scroll
         data-scroll-speed="-5"
-        className="w-[225px] h-[225px] rounded-2xl"
+        className="w-[225px] h-[260px] md:w-[225px] md:h-[225px] rounded-xl self-center"
         src="/bjbaskar1.jpg"
         alt="bjbaskar"
       />
