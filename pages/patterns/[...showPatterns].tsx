@@ -109,7 +109,7 @@ export default function ShowPatternsPage() {
 
   return (
     <ShowCodeContainer>
-      <pre className="px-8">
+      <pre className="px-8" id="code">
         <code>{showCode}</code>
       </pre>
     </ShowCodeContainer>
