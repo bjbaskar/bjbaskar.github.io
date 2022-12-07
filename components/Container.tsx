@@ -10,7 +10,10 @@ export default function Container(props: any) {
   const [hoveredIndex, setHoveredIndex] = useState<number>(0);
   const { theme, setTheme } = useTheme();
 
-  useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    setMounted(true);
+    setTheme("dark");
+  }, []);
 
   const { children, ...customMeta } = props;
   const router = useRouter();
