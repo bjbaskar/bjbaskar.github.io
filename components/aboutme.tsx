@@ -35,12 +35,12 @@ const Aboutme: React.FC = () => {
           </strong>{" "}
           from MK University, India
           <br />
-          <br />A self motivated and result oriented professional having a
+          <br />Self motivated and result oriented professional having a
           strong passion for <strong>Web & Mobile development</strong> and also
           an excellent individual contributor.
           <br />
           <br />
-          I also have extensive experience working in distributed teams and
+          Extensive experience working in distributed teams and
           understand various nuances of working in complex organisations.
           <br />
           <br />
