@@ -6,7 +6,7 @@ export const canvasImages = [
   "/skills/graphql.svg",
   "/skills/docker.svg",
   "/skills/next.svg",
-  "/skills/redix-store.svg",
+  "/skills/redux-store.svg",
   "/skills/database.svg",
   "/skills/android.svg",
 ];
