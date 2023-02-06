@@ -4,6 +4,11 @@ export const canvasImages = [
   "/skills/nodejs.svg",
   "/skills/python.svg",
   "/skills/graphql.svg",
+  "/skills/docker.svg",
+  "/skills/next.svg",
+  "/skills/redix-store.svg",
+  "/skills/database.svg",
+  "/skills/android.svg",
 ];
 
 //export const canvasImages = ["react", "typescript", "nodejs", "python"].map(
