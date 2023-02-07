@@ -5,7 +5,7 @@ const isProd = process.env.NODE_ENV === "production";
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  distDir: "build",
+  // distDir: "build",
   images: {
     unoptimized: true,
   },

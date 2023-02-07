@@ -1,0 +1,12 @@
+{
+    "apps": [
+        {
+            "name": "bjbaskar",
+            "script": "node_modules/next/dist/bin/next",
+            "args": "start -p 3000",
+            "cwd": "./",
+            "instances": "5",
+            "exec_mode": "cluster"
+        }
+    ]
+}

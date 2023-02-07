@@ -1,0 +1,9 @@
+version: '3'
+services:
+  nextjs:
+    build: ./
+    # command: "pm2-runtime start pm2.config.js --env production"
+  nginx:
+    build: ./nginx
+    ports:
+      - 80:80

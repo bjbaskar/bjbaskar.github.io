@@ -9,7 +9,8 @@
     "lint": "next lint",
     "export": "npm run build && next export",
     "exp": " next export",
-    "deploy": "next build && next export && git add out/ && git commit -m \"Deploy gh-pages\" && git subtree push --prefix out origin gh-pages"
+    "deploy": "next build && next export && git add out/ && git commit -m \"Deploy gh-pages\" && git subtree push --prefix out origin gh-pages",
+    "pm2": "pm2 start pm2.json && pm2-runtime start pm2.json"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.8",

@@ -1,0 +1,12 @@
+.git/
+.github
+.gitignore
+.next/                
+.dockerignore
+Dockerfile
+docker-compose.yml
+node_modules/         
+node_modules
+nginx/
+.husky
+build
