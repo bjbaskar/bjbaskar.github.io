@@ -129,7 +129,7 @@ export const TimelineData: Array<ITimelineData> = [
   {
     id: "2019",
     title: "Senior Full Stack Developer",
-    company: "Singapore",
+    company: "Singapore - BOFA, Saltmine",
     location: "Singapore",
     technology:
       "ReactJs Redux NodeJs ElasticSearch D3js Charts MongoDB SqlServer OAuth2 OIDC",

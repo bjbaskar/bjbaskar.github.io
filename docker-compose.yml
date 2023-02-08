@@ -4,6 +4,6 @@ services:
     build: ./
     # command: "pm2-runtime start pm2.config.js --env production"
   nginx:
-    build: ./nginx
+    build: ./_nginx
     ports:
       - 80:80
