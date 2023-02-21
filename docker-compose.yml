@@ -7,5 +7,6 @@ services:
   bjbaskar_nginx:
     build: ./_nginx
     container_name: bjbaskar_nginx
+    image: bjbaskar_nginx_img:latest
     ports:
       - 80:80
