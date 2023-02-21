@@ -7,3 +7,4 @@ services:
     build: ./_nginx
     ports:
       - 80:80
+      - 81:80
