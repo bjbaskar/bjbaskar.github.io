@@ -1,9 +1,11 @@
 version: '3'
 services:
-  nextjs:
+  bjbaskar_nextjs:
+    container_name: bjbaskar_nextjs
     build: ./
     # command: "pm2-runtime start pm2.config.js --env production"
-  nginx:
+  bjbaskar_nginx:
     build: ./_nginx
+    container_name: bjbaskar_nginx
     ports:
       - 80:80
