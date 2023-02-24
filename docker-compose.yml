@@ -5,8 +5,8 @@ services:
     build: 
       context: ./
       dockerfile: Dockerfile
-      ports:
-        - "3000:3000"
+      expose:
+        - 3000
       labels:
         - "traefik.enable=true"
         - "traefik.http.routers.bjb_web.rule=Host(`bjbaskar.com`, `www.bjbaskar.com`)"
