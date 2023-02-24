@@ -1,12 +1,42 @@
 version: '3'
 services:
-  bjbaskar_nextjs:
-    container_name: bjbaskar_nextjs
-    build: ./
-    # command: "pm2-runtime start pm2.config.js --env production"
-  bjbaskar_nginx:
-    build: ./_nginx
-    container_name: bjbaskar_nginx
-    image: bjbaskar_nginx_img:latest
+  bjb_web:
+    container_name: bjb_web
+    build: 
+      context: ./
+      dockerfile: Dockerfile
+      ports:
+        - "3000:3000"
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.bjb_web.rule=Host(`bjbaskar.com`, `www.bjbaskar.com`)"
+        - "traefik.http.routers.bjb_web.entrypoints=websecure"
+        - "traefik.http.routers.bjb_web.tls.certresolver=myresolver"
+        - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+        - "traefik.http.routers.redirs.rule=hostregexp(`{host:.+}`)"
+        - "traefik.http.routers.redirs.entrypoints=bjb_web"
+        - "traefik.http.routers.redirs.middlewares=redirect-to-https"
+ 
+  bjb_traefik:
+    image: traefik:v2.4
+    container_name: bjb_traefik
+    command:
+      - "--api.insecure=true"
+      - "--api.dashboard=true"
+      - "--api.debug=true"
+      - "--providers.docker=true"
+      - "--log.LEVEL=DEBUG"
+      - "--entryPoints.web.address=:80"
+      - "--entryPoints.websecure.address=:443"
+      - "--providers.docker.exposedbydefault=false"
+      - "--certificatesresolvers.myresolver.acme.httpchallenge=true"
+      - "--certificatesresolvers.myresolver.acme.httpchallenge.entrypoint=web"
+      - "--certificatesresolvers.myresolver.acme.email=bjbaskar@gmail.com"
+      - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
     ports:
-      - 80:80
+      - "443:443"
+      - "80:80"
+      - "8080:8080"
+    volumes:
+      - "./letsencrypt:/letsencrypt"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
