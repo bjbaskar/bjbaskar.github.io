@@ -8,29 +8,17 @@ services:
       labels:
         - "traefik.enable=true"
         - "traefik.http.routers.bjb_web.rule=Host(`bjbaskar.com`, `www.bjbaskar.com`)"
-        - "traefik.http.routers.bjb_web.entrypoints=websecure"
-        - "traefik.http.routers.bjb_web.tls.certresolver=myresolver"
-        - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
-        - "traefik.http.routers.redirs.rule=hostregexp(`{host:.+}`)"
-        - "traefik.http.routers.redirs.entrypoints=bjb_web"
-        - "traefik.http.routers.redirs.middlewares=redirect-to-https"
- 
+        - "traefik.http.routers.bjb_web.tls.certresolver=letsencrypt"
+        - "traefik.http.routers.blog.tls=true"     
+    ports:
+      - "3000:3000"
+    networks:
+      - internal
+      - web
+
   bjb_traefik:
     image: traefik:v2.4
-    container_name: bjb_traefik
-    command:
-      - "--api.insecure=true"
-      - "--api.dashboard=true"
-      - "--api.debug=true"
-      - "--providers.docker=true"
-      - "--log.LEVEL=DEBUG"
-      - "--entryPoints.web.address=:80"
-      - "--entryPoints.websecure.address=:443"
-      - "--providers.docker.exposedbydefault=false"
-      - "--certificatesresolvers.myresolver.acme.httpchallenge=true"
-      - "--certificatesresolvers.myresolver.acme.httpchallenge.entrypoint=web"
-      - "--certificatesresolvers.myresolver.acme.email=bjbaskar@gmail.com"
-      - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
+    container_name: bjb_traefik 
     ports:
       - "443:443"
       - "80:80"
@@ -38,3 +26,10 @@ services:
     volumes:
       - "./letsencrypt:/letsencrypt"
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - "$PWD/traefik.prod.toml:/etc/traefik/traefik.toml"
+
+  networks:
+    web:
+      external: true
+    internal:
+      external: false
