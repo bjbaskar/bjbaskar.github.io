@@ -18,7 +18,7 @@ services:
         - "traefik.http.routers.bjb_web.tls.certresolver=letsencrypt"
         - "traefik.http.routers.blog.tls=true"     
     expose:
-      - 5000
+      - "3000"
     networks:
       - internal
       - web
