@@ -35,3 +35,5 @@ services:
       - "./letsencrypt:/letsencrypt"
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
       - "$PWD/traefik.prod.toml:/etc/traefik/traefik.toml"
+    networks:
+      - web
