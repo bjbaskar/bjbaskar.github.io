@@ -1,4 +1,11 @@
 version: '3.8'
+
+networks:
+  web:
+    external: true
+  internal:
+    external: false
+    
 services:
   bjb_web:
     container_name: bjb_web
@@ -15,6 +22,7 @@ services:
     networks:
       - internal
       - web
+    restart: always
 
   bjb_traefik:
     image: traefik:v2.4
@@ -27,9 +35,3 @@ services:
       - "./letsencrypt:/letsencrypt"
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
       - "$PWD/traefik.prod.toml:/etc/traefik/traefik.toml"
-
-  networks:
-    web:
-      external: true
-    internal:
-      external: false
