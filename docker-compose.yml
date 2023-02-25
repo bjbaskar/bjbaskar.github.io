@@ -17,8 +17,8 @@ services:
         - "traefik.http.routers.bjb_web.rule=Host(`bjbaskar.com`, `www.bjbaskar.com`)"
         - "traefik.http.routers.bjb_web.tls.certresolver=letsencrypt"
         - "traefik.http.routers.blog.tls=true"     
-    ports:
-      - "3000:3000"
+    expose:
+      - 5000
     networks:
       - internal
       - web
