@@ -9,9 +9,11 @@
 
   [entryPoints.websecure]
     address = ":443"
-    [http.tls.domains]
-      main = "bjbaskar.com"
-      sans = ["thirukkural.bjbaskar.com", "api.bjbaskar.com"]
+  [entryPoints.websecure.http]
+    [entryPoints.websecure.http.tls]
+      [entryPoints.websecure.http.tls.domains]
+        main = "bjbaskar.com"
+        sans = ["thirukkural.bjbaskar.com", "api.bjbaskar.com"]
 
 [accessLog]
 	format = "json"
