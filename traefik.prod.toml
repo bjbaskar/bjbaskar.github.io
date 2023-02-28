@@ -36,7 +36,3 @@
   tlschallenge = true
   [certificatesResolvers.letsencrypt.acme.httpChallenge]
     entryPoint = "web"
-
-[[acme.domains]]
-   main = "bjbaskar.com"
-   sans = ["thirukkural.bjbaskar.com", "api.bjbaskar.com"]
