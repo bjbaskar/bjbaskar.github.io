@@ -3,8 +3,6 @@ version: '3.8'
 networks:
   web:
     external: true
-  internal:
-    external: false
     
 services:
   bjb_web:
@@ -17,6 +15,7 @@ services:
         - "traefik.http.routers.bjb_web.rule=Host(`bjbaskar.com`, `www.bjbaskar.com`)"
         - "traefik.http.routers.bjb_web.tls.certresolver=letsencrypt"
         - "traefik.http.routers.blog.tls=true"
+        - "traefik.http.services.cal.loadbalancer.server.port=3000"
     ports:
       - "3000:3000"
     expose:
@@ -37,6 +36,7 @@ services:
         - "traefik.http.routers.thirukkural.rule=Host(`thirukkural.bjbaskar.com`, `www.thirukkural.bjbaskar.com`)"
         - "traefik.http.routers.thirukkural.tls.certresolver=letsencrypt"
         - "traefik.http.routers.blog.tls=true"
+        - "traefik.http.services.cal.loadbalancer.server.port=3001"
     ports:
       - "3001:3001"
     expose:
@@ -58,5 +58,7 @@ services:
       - "./letsencrypt:/letsencrypt"
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
       - "$PWD/traefik.prod.toml:/etc/traefik/traefik.toml"
+      - /opt/traefik/acme.json:/acme.json
     networks:
       - web
+    restart: unless-stopped

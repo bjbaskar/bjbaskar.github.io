@@ -9,6 +9,9 @@
 
   [entryPoints.websecure]
     address = ":443"
+    [http.tls.domains]
+      main = "bjbaskar.com"
+      sans = ["thirukkural.bjbaskar.com", "api.bjbaskar.com"]
 
 [accessLog]
 	format = "json"
@@ -24,10 +27,13 @@
 [providers]
   [providers.docker]
     exposedByDefault = false
+    watch = true
+    network = "web"
 
 [certificatesResolvers.letsencrypt.acme]
   email = "bjbaskar@gmail.com"
   storage= "acme.json"
+  tlschallenge = true
   [certificatesResolvers.letsencrypt.acme.httpChallenge]
     entryPoint = "web"
 
