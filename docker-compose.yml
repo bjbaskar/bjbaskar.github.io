@@ -16,8 +16,6 @@ services:
         - "traefik.http.routers.bjb_web.tls.certresolver=letsencrypt"
         - "traefik.http.routers.blog.tls=true"
         - "traefik.http.services.cal.loadbalancer.server.port=3000"
-    ports:
-      - "3000:3000"
     expose:
       - "3000"
     networks:
