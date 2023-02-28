@@ -10,18 +10,42 @@ services:
   bjb_web:
     container_name: bjb_web
     build: 
-      context: ./
-      dockerfile: Dockerfile
+      context: ./_dockerfiles
+      dockerfile: bjbaskar_dockerfile
       labels:
         - "traefik.enable=true"
         - "traefik.http.routers.bjb_web.rule=Host(`bjbaskar.com`, `www.bjbaskar.com`)"
         - "traefik.http.routers.bjb_web.tls.certresolver=letsencrypt"
-        - "traefik.http.routers.blog.tls=true"     
+        - "traefik.http.routers.blog.tls=true"
+    ports:
+      - "3000:3000"
     expose:
       - "3000"
     networks:
       - web
-    restart: always
+    depends_on:
+      - bjb_traefik
+    restart: unless-stopped
+  
+  thirukkural:
+    container_name: thirukkural
+    build: 
+      context: ../thirukkural/_dockerfiles
+      dockerfile: thirukkural_dockerfile
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.bjb_web.rule=Host(`thirukkural.bjbaskar.com`, `www.thirukkural.bjbaskar.com`)"
+        - "traefik.http.routers.bjb_web.tls.certresolver=letsencrypt"
+        - "traefik.http.routers.blog.tls=true"
+    ports:
+      - "3001:3001"
+    expose:
+      - "3001"
+    networks:
+      - web
+    depends_on:
+      - bjb_traefik
+    restart: unless-stopped
 
   bjb_traefik:
     image: traefik:v2.4
@@ -34,5 +58,6 @@ services:
       - "./letsencrypt:/letsencrypt"
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
       - "$PWD/traefik.prod.toml:/etc/traefik/traefik.toml"
+      - /opt/traefik/acme.json:/acme.json
     networks:
       - web
