@@ -34,8 +34,8 @@ services:
       dockerfile: thirukkural_dockerfile
       labels:
         - "traefik.enable=true"
-        - "traefik.http.routers.bjb_web.rule=Host(`thirukkural.bjbaskar.com`, `www.thirukkural.bjbaskar.com`)"
-        - "traefik.http.routers.bjb_web.tls.certresolver=letsencrypt"
+        - "traefik.http.routers.thirukkural.rule=Host(`thirukkural.bjbaskar.com`, `www.thirukkural.bjbaskar.com`)"
+        - "traefik.http.routers.thirukkural.tls.certresolver=letsencrypt"
         - "traefik.http.routers.blog.tls=true"
     ports:
       - "3001:3001"
