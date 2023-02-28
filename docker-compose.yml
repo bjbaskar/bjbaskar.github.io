@@ -35,8 +35,6 @@ services:
         - "traefik.http.routers.thirukkural.tls.certresolver=letsencrypt"
         - "traefik.http.routers.blog.tls=true"
         - "traefik.http.services.cal.loadbalancer.server.port=3001"
-    ports:
-      - "3001:3001"
     expose:
       - "3001"
     networks:
