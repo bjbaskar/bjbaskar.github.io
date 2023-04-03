@@ -68,3 +68,18 @@ body {
   background-size: 100% 100%;
   background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="#fff"><path d="M11.354 1.646a.5.5.0 010 .708L5.707 8l5.647 5.646a.5.5.0 01-.708.708l-6-6a.5.5.0 010-.708l6-6a.5.5.0 01.708.0z"/></svg>');
 }
+
+.news-paragraph {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 300px;
+  margin: 0 auto;
+  line-height: 1.5;
+  text-align: justify;
+}
+
+.news-paragraph p {
+  margin: 0 0 20px;
+  padding: 0 20px;
+}
