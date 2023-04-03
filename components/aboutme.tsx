@@ -27,7 +27,7 @@ const Aboutme: React.FC = () => {
           <span className="text-green-400">Technical Architect</span>
         </p>
 
-        <div className="flex flex-row flex-wrap items-start justify-start mt-4">
+        <div className="flex flex-row flex-wrap mt-4">
           <div className="news-paragraph">
             <p>
             Hello! My name is Baskaran, and I am a software developer with more than 20+ years of experience. Currently based in <strong>Singapore</strong>, I completed my master's degree in computer applications from MK University in India.
@@ -41,7 +41,8 @@ const Aboutme: React.FC = () => {
           </div>
 
           <div className="news-paragraph">
-            <p>
+            <p className="first-letter:text-2xl first-letter:font-bold first-letter:text-gray-900 
+            dark:first-letter:text-gray-100 first-letter:mr-1 first-letter:float-left">
             Over the years, I have had the opportunity to work with various organizations like Standard Chartered Bank, Deutsche Bank (HCL), Bank of America, and several IT firms, which have been instrumental in honing my skills. Through these experiences, I have learned a lot and met some very helpful people in the industry.
             </p>
           </div>
