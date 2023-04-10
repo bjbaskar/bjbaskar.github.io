@@ -34,7 +34,7 @@ const Aboutme: React.FC = () => {
         <div className="flex flex-row flex-wrap mt-4 text-lg ">
           <div className="news-paragraph">
             <p data-scroll className="mt-4">
-            Hello! My name is <span className="text-2xl">Baskaran</span>, and I am a software developer with more than 20+ years of experience. Currently based in <strong>Singapore</strong>, I completed my master's degree in computer applications from MK University in India.
+            Hello! My name is <span className="text-2xl">Baskaran</span>, and I am a software developer with more than 20+ years of experience. Currently based in <strong>Singapore</strong>, I completed my master&apos;s degree in computer applications from MK University in India.
             </p>
           </div>
 
