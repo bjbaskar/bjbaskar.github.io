@@ -1,4 +1,5 @@
 import React from "react";
+import Image from 'next/image';
 
 const Aboutme: React.FC = () => {
   return (
@@ -7,13 +8,15 @@ const Aboutme: React.FC = () => {
       className="flex gap-[5vw] px-[5vw] lg:px-[15vw] z-[2] lg:min-h-[70vh] 
             items-start justify-center flex-col md:flex-row pt-4"
     >
-      <img
+      <Image
         data-scroll
         data-scroll-speed="-5"
         className="w-[225px] h-[260px] md:w-[225px] md:h-[225px] rounded-xl self-center
         md:self-start"
         src="/bjbaskar1.jpg"
         alt="bjbaskar"
+        width={225}
+        height={225}
       />
 
       <div>

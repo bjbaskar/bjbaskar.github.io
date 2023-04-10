@@ -13,7 +13,7 @@ export default function Container(props: any) {
   useEffect(() => {
     setMounted(true);
     setTheme("dark");
-  }, []);
+  }, [setTheme]);
 
   const { children, ...customMeta } = props;
   const router = useRouter();

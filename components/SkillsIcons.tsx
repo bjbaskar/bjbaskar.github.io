@@ -1,4 +1,5 @@
 import { FC } from "react";
+import Image from 'next/image';
 
 interface SkillsProps {
   image: string;
@@ -84,10 +85,12 @@ const SkillsIcon: FC = () => {
             rel="noopener noreferrer"
             className="item flex flex-col items-center justify-around group"
           >
-            <img
+            <Image
               className="w-[60px] h-[60px] transition duration-300 group-hover:scale-110"
               src={skill.image}
               alt=""
+              width={60}
+              height={60}
             />
             <p className="text-center">{skill.title}</p>
           </a>

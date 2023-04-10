@@ -23,14 +23,14 @@ const Carousel: React.FC = () => {
     slideRef.current?.classList.add("fade-anim");
   };
 
-  const startSlider = () => {
-    slideInterval = setInterval(() => {
-      handleOnNextClick();
-    }, 5000);
-  };
+  
 
   useEffect(() => {
-    startSlider();
+    const startSlider = () => {
+      slideInterval = setInterval(() => {
+        handleOnNextClick();
+      }, 5000);
+    };
     slideRef.current?.addEventListener("animationend", removeAnimation);
     slideRef.current?.addEventListener("mouseenter", pauseSlider);
     slideRef.current?.addEventListener("mouseleave", startSlider);
