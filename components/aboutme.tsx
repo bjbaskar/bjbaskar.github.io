@@ -10,7 +10,8 @@ const Aboutme: React.FC = () => {
       <img
         data-scroll
         data-scroll-speed="-5"
-        className="w-[225px] h-[260px] md:w-[225px] md:h-[225px] rounded-xl self-center"
+        className="w-[225px] h-[260px] md:w-[225px] md:h-[225px] rounded-xl self-center
+        md:self-start"
         src="/bjbaskar1.jpg"
         alt="bjbaskar"
       />
@@ -27,10 +28,10 @@ const Aboutme: React.FC = () => {
           <span className="text-green-400">Technical Architect</span>
         </p>
 
-        <div className="flex flex-row flex-wrap mt-4">
+        <div className="flex flex-row flex-wrap mt-4 text-lg ">
           <div className="news-paragraph">
-            <p>
-            Hello! My name is Baskaran, and I am a software developer with more than 20+ years of experience. Currently based in <strong>Singapore</strong>, I completed my master's degree in computer applications from MK University in India.
+            <p data-scroll className="mt-4">
+            Hello! My name is <span className="text-2xl">Baskaran</span>, and I am a software developer with more than 20+ years of experience. Currently based in <strong>Singapore</strong>, I completed my master's degree in computer applications from MK University in India.
             </p>
           </div>
 
@@ -41,8 +42,13 @@ const Aboutme: React.FC = () => {
           </div>
 
           <div className="news-paragraph">
-            <p className="first-letter:text-2xl first-letter:font-bold first-letter:text-gray-900 
-            dark:first-letter:text-gray-100 first-letter:mr-1 first-letter:float-left">
+            <p className="
+                      first-letter:text-4xl 
+                      first-letter:font-bold 
+                      first-letter:text-gray-900 
+                      first-letter:mr-1 
+                      first-letter:float-left
+                      dark:first-letter:text-gray-100">
             Over the years, I have had the opportunity to work with various organizations like Standard Chartered Bank, Deutsche Bank (HCL), Bank of America, and several IT firms, which have been instrumental in honing my skills. Through these experiences, I have learned a lot and met some very helpful people in the industry.
             </p>
           </div>
@@ -54,7 +60,13 @@ const Aboutme: React.FC = () => {
           </div>
 
           <div className="news-paragraph">
-            <p>
+            <p className="
+                      first-letter:text-4xl 
+                      first-letter:font-bold 
+                      first-letter:text-gray-900 
+                      first-letter:mr-1 
+                      first-letter:float-left
+                      dark:first-letter:text-gray-100">
             As a software developer, I am passionate about creating innovative solutions to solve complex problems. I am constantly seeking to expand my skill set and keep up with the latest trends and technologies. If you are looking for a dedicated and experienced software developer to join your team or collaborate on a project, I would love to hear from you!
             </p>
           </div>
