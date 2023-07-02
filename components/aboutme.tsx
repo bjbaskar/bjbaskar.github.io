@@ -33,65 +33,61 @@ const Aboutme: React.FC = () => {
 
         <div className="flex flex-row flex-wrap mt-4 text-lg ">
           <div className="news-paragraph">
-            <p data-scroll className="mt-4
-                      first-letter:text-4xl 
-                      first-letter:font-bold 
-                      first-letter:text-gray-900 
-                      first-letter:mr-1 
-                      first-letter:float-left
-                      dark:first-letter:text-gray-100">
-            Hello! My name is <span className="text-2xl">Baskaran</span>, and I am a software developer with more than 20+ years of experience. Currently based in <strong>Singapore</strong>, I completed my master&apos;s degree in computer applications from MK University in India.
+            <p
+              data-scroll
+              className="mt-4 text-gray-900 
+                      dark:text-gray-100"
+            >
+              Hello! My name is <span className="text-2xl">Baskaran</span>, and
+              I am a software developer with more than 20+ years of experience.
+              Currently based in <strong>Singapore</strong>, I completed my
+              master&apos;s degree in computer applications from MK University
+              in India.
             </p>
           </div>
 
           <div className="news-paragraph">
-            <p className="
-                      first-letter:text-4xl 
-                      first-letter:font-bold 
-                      first-letter:text-gray-900 
-                      first-letter:mr-1 
-                      first-letter:float-left
-                      dark:first-letter:text-gray-100">
-            I have a strong passion for web and mobile development and am self-motivated, results-oriented, and an excellent individual contributor. I have extensive experience working in distributed teams and understand the nuances of working in complex organizations.
+            <p className="text-gray-900 dark:text-gray-100">
+              I have a strong passion for web and mobile development and am
+              self-motivated, results-oriented, and an excellent individual
+              contributor. I have extensive experience working in distributed
+              teams and understand the nuances of working in complex
+              organizations.
             </p>
           </div>
 
           <div className="news-paragraph">
-            <p className="
-                      first-letter:text-4xl 
-                      first-letter:font-bold 
-                      first-letter:text-gray-900 
-                      first-letter:mr-1 
-                      first-letter:float-left
-                      dark:first-letter:text-gray-100">
-            Over the years, I have had the opportunity to work with various organizations like Standard Chartered Bank, Deutsche Bank (HCL), Bank of America, and several IT firms, which have been instrumental in honing my skills. Through these experiences, I have learned a lot and met some very helpful people in the industry.
+            <p className="text-gray-900 dark:text-gray-100">
+              Over the years, I have had the opportunity to work with various
+              organizations like Standard Chartered Bank, Deutsche Bank (HCL),
+              Bank of America, and several IT firms, which have been
+              instrumental in honing my skills. Through these experiences, I
+              have learned a lot and met some very helpful people in the
+              industry.
             </p>
           </div>
 
           <div className="news-paragraph">
-            <p className="mt-4
-                      first-letter:text-4xl 
-                      first-letter:font-bold 
-                      first-letter:text-gray-900 
-                      first-letter:mr-1 
-                      first-letter:float-left
-                      dark:first-letter:text-gray-100">
-            With a proven track record of many successful projects, I have played multiple roles such as full-stack web developer, frontend developer, backend developer, technical architect, and more. This has enabled me to develop a unique set of skills that enables me to deliver a high-quality product while managing complex challenges effectively.
+            <p className="mt-4 text-gray-900 dark:text-gray-100">
+              With a proven track record of many successful projects, I have
+              played multiple roles such as full-stack web developer, frontend
+              developer, backend developer, technical architect, and more. This
+              has enabled me to develop a unique set of skills that enables me
+              to deliver a high-quality product while managing complex
+              challenges effectively.
             </p>
           </div>
 
           <div className="news-paragraph">
-            <p className="
-                      first-letter:text-4xl 
-                      first-letter:font-bold 
-                      first-letter:text-gray-900 
-                      first-letter:mr-1 
-                      first-letter:float-left
-                      dark:first-letter:text-gray-100">
-            As a software developer, I am passionate about creating innovative solutions to solve complex problems. I am constantly seeking to expand my skill set and keep up with the latest trends and technologies. If you are looking for a dedicated and experienced software developer to join your team or collaborate on a project, I would love to hear from you!
+            <p className="text-gray-900 dark:text-gray-100">
+              As a software developer, I am passionate about creating innovative
+              solutions to solve complex problems. I am constantly seeking to
+              expand my skill set and keep up with the latest trends and
+              technologies. If you are looking for a dedicated and experienced
+              software developer to join your team or collaborate on a project,
+              I would love to hear from you!
             </p>
           </div>
-
         </div>
 
         {/* <p data-scroll className="text-lg tracking-wide mt-4">

@@ -111,8 +111,7 @@ export const TimelineData: Array<ITimelineData> = [
     title: "Technical Architect | Full Stack Developer",
     company: "Greater Chennai",
     location: "India",
-    technology:
-      "ReactJs Redux Next NodeJs Nest Typescript GraphQL, Python, OAuth2 - MySql",
+    technology: "ReactJs Redux Next NodeJs Typescript GraphQL, Python - MySql",
     domain: "Web/Mobile apps",
     year: "2022",
   },
@@ -122,7 +121,7 @@ export const TimelineData: Array<ITimelineData> = [
     company: "Remote (NY projects)",
     location: "India",
     technology:
-      "ReactJS/ReactNative Redux Python-FastAPI, SQLAlchemy, Ariadne-GraphQL, MySql",
+      "ReactJS/ReactNative Redux Python-FastAPI, SQLAlchemy, GraphQL, MySql",
     domain: "Web/Mobile Applications",
     year: "2020-2022",
   },

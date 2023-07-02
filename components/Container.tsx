@@ -22,7 +22,7 @@ export default function Container(props: any) {
     <div className="w-full bg-white dark:bg-zinc-900">
       <nav
         className="fixed top-0 z-50 flex justify-between items-center w-full 
-      p-8 mx-auto bg-gray-900 dark:bg-zinc-900"
+      p-8 mx-auto bg-gray-100 dark:bg-zinc-900"
       >
         <div className="text-xl text-gray-300">{"<Baskar />"}</div>
         <div
