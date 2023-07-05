@@ -1,3 +1,6 @@
+
+defaultEntryPoints = ["https", "http"]
+
 [entryPoints]
 [entryPoints.web]
 address = ":80"
@@ -36,5 +39,15 @@ network = "web"
 email = "bjbaskar@gmail.com"
 storage = "acme.json"
 tlschallenge = true
+[[acme.domains]]
+main = "bjbaskar.com"
+[[acme.domains]]
+main = "*.bjbaskar.com"
+
 [certificatesResolvers.letsencrypt.acme.httpChallenge]
 entryPoint = "web"
+
+[docker]
+endpoint = "unix:///var/run/docker.sock"
+domain = "bjbaskar.com"
+watch = true

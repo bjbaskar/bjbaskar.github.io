@@ -1,0 +1,72 @@
+# https://github.com/macbre/docker-traefik/blob/master/docker-compose.yml
+
+# https://doc.traefik.io/traefik/providers/docker/
+# https://doc.traefik.io/traefik/reference/static-configuration/env/
+#
+# Label your containers with:
+# 
+# labels:
+#  - "traefik.enable=true"
+#  - "traefik.http.routers.my-container.entrypoints=websecure"
+#  - "traefik.http.routers.my-container.rule=Host(`example.com`)"
+#  - "traefik.http.services.my-container.loadbalancer.server.port=<port>
+#
+# See https://doc.traefik.io/traefik/user-guides/docker-compose/basic-example/
+#
+# and add them to:
+#
+# networks:
+#  default:
+#    name: public_network  # use this network to expose your containers
+#
+version: "2.4"
+
+services:
+
+  # https://doc.traefik.io/traefik/getting-started/install-traefik/
+  traefik:
+    # https://hub.docker.com/_/traefik/tags
+    image: traefik:v2.10.1
+    container_name: traefik
+    hostname: traefik
+    restart: always
+    user: nobody
+
+    ports:
+      - 127.0.0.1:${DASHBOARD_PORT:-58888}:8080  # bind to local interface only!
+      - ${HTTP_PORT:-80}:1080
+      - ${HTTPS_PORT:-443}:1443/tcp
+      - ${HTTPS_PORT:-443}:1443/udp # for http3 (quic)
+
+    volumes:
+      - "./traefik.yml:/etc/traefik/traefik.yml:ro"
+      - "./letsencrypt:/var/log/letsencrypt/"  # certificates storage
+
+    # https://doc.traefik.io/traefik/reference/static-configuration/env/
+    environment:
+      TRAEFIK_CERTIFICATESRESOLVERS_MYRESOLVER_ACME_EMAIL: ${ACME_EMAIL:-foo@acme.net}
+      # TRAEFIK_LOG_LEVEL: ${LOG_LEVEL:-INFO}
+
+    healthcheck:
+      test: 'traefik healthcheck'
+      interval: 15s
+      timeout: 1s
+      retries: 5
+
+  # https://github.com/Tecnativa/docker-socket-proxy
+  socket-proxy:
+    image: tecnativa/docker-socket-proxy:0.1
+    container_name: docker-socket-proxy
+    restart: always
+    user: root  # needed to mount the docker.sock
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    # https://github.com/Tecnativa/docker-socket-proxy#grant-or-revoke-access-to-certain-api-sections
+    environment:
+      CONTAINERS: 1  # only allow GET requests to the containers API section
+
+# https://docs.docker.com/compose/networking/#configure-the-default-network
+networks:
+  default:
+    name: public-network
+    external: true
