@@ -25,26 +25,6 @@ services:
       - bjb_traefik
     restart: unless-stopped
   
-  thirukkural:
-    container_name: thirukkural
-    build: 
-      context: ../thirukkural/
-      dockerfile: thirukkural_dockerfile
-      labels:
-        - "traefik.enable=true"
-        - "traefik.http.routers.thirukkural.rule=Host(`thirukkural.bjbaskar.com`, `www.thirukkural.bjbaskar.com`)"
-        - "traefik.http.routers.thirukkural.tls=true"
-        - "traefik.http.routers.thirukkural.entrypoints=websecure"
-        - "traefik.http.routers.thirukkural.tls.certresolver=letsencrypt"
-        - "traefik.http.services.thirukkural.loadbalancer.server.port=3001"
-    expose:
-      - "3001"
-    networks:
-      - web
-    depends_on:
-      - bjb_traefik
-    restart: unless-stopped
-
   bjb_traefik:
     image: traefik:v2.4
     container_name: bjb_traefik 
