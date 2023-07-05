@@ -17,6 +17,7 @@ services:
         - "traefik.http.routers.bjb_web.entrypoints=websecure"
         - "traefik.http.routers.bjb_web.tls.certresolver=letsencrypt"
         - "traefik.http.services.bjb_web.loadbalancer.server.port=3000"
+        - "traefik.docker.network=web"
     expose:
       - "3000"
     networks:
