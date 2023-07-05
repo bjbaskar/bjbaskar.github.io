@@ -44,7 +44,7 @@ services:
 
     # https://doc.traefik.io/traefik/reference/static-configuration/env/
     environment:
-      TRAEFIK_CERTIFICATESRESOLVERS_MYRESOLVER_ACME_EMAIL: ${ACME_EMAIL:-foo@acme.net}
+      TRAEFIK_CERTIFICATESRESOLVERS_MYRESOLVER_ACME_EMAIL: ${ACME_EMAIL:-bjbaskar@gmail.com}
       # TRAEFIK_LOG_LEVEL: ${LOG_LEVEL:-INFO}
 
     healthcheck:
