@@ -1,136 +1,43 @@
-version: "3.5"
+version: "3.3"
 
 networks:
-  net:
+  web:
     external: true
-    name: ${NETWORK}
 
 services:
+
   traefik:
-    # Setting container_name disables running multinple instances of this service
-    container_name: traefik
-    image: traefik:v2.4
-    restart: always
+    image: "traefik:v2.10"
+    container_name: "bjb_traefik"
     command:
-      - --entrypoints.web.address=:80
-      - --entrypoints.websecure.address=:443
-      - --log.level=${LOG_LEVEL}
-      - --providers.docker
-      - --providers.docker.network=${NETWORK}
-      - --providers.docker.exposedbydefault=false
-      - --providers.file.filename=/etc/traefik/certs.toml
-      - --api
-
-      # Writing Logs to a file
-      - --log.filePath=/logs/traefik.log
-      # supports common (Common Log Format) or json
-      - --log.format=${LOG_FORMAT:-common}
-      # Configuring a buffer of 100 lines
-      - --accesslog=${ACCESSLOG:-true}
-      - --accesslog.filepath=/logs/access.log
-      - --accesslog.bufferingsize=${ACCESSLOG_BUFFERINGSIZE:-100}
-
-      # access log fields
-      # Limiting the Logs to Specific Fields
-      - --accesslog.fields.defaultmode=${ACCESSLOG_FIELDS_DEFAULTMODE:-keep}
-      - --accesslog.fields.names.ClientUsername=${ACCESSLOG_FIELDS_NAMES_CLIENTUSERNAME:-keep}
-      - --accesslog.fields.headers.defaultmode=${ACCESSLOG_FIELDS_HEADERS_DEFAULTMODE:-keep}
-      - --accesslog.fields.headers.names.User-Agent=${ACCESSLOG_FIELDS_HEADERS_NAMES_USER_AGENT:-keep}
-      - --accesslog.fields.headers.names.Authorization=${ACCESSLOG_FIELDS_HEADERS_NAMES_AUTHORIZATION:-keep}
-      - --accesslog.fields.headers.names.Content-Type=${ACCESSLOG_FIELDS_HEADERS_NAMES_CONTENT_TYPE:-keep}
-
-      # cert resolvers
-      - --certificatesresolvers.le.acme.caserver=${CA_SERVER}
-      - --certificatesresolvers.le.acme.email=${EMAIL}
-      - --certificatesresolvers.le.acme.storage=/acme.json
-      - --certificatesResolvers.le.acme.tlsChallenge=${TLS_CHALLENGE}
-      - --certificatesResolvers.le.acme.dnsChallenge=${DNS_CHALLENGE}
-      - --certificatesResolvers.le.acme.dnsChallenge.provider=${PROVIDER}
-      - --certificatesResolvers.le.acme.dnsChallenge.resolvers=1.1.1.1:53,8.8.8.8:53
-    environment:
-      - ${PROVIDER_ENV_FILE}=/provider.key
+      #- "--log.level=DEBUG"
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
     ports:
       - "80:80"
-      - "443:443"
-    networks:
-      - net
+      - "8080:8080"
     volumes:
-      - "${CERT_PATH}:/certs"
-      - "${ACME_PATH}:/acme.json"
-      - "${CONFIG_PATH}:/etc/traefik"
-      - "${LOG_PATH:-./logs}:/logs"
-      - "${PROVIDER_ENV_FILE_VALUE}:/provider.key:ro"
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
-    labels:
-      # set this lebel to `false` and the rest is history
-      traefik.enable: true
-      # middleware redirect
-      traefik.http.middlewares.redirect-to-https.redirectscheme.scheme: https
+    networks:
+      - web
 
-      # redirection HTTP to HTTPS
-      traefik.http.routers.http_catchall.rule: hostregexp(`{host:.+}`)
-      traefik.http.routers.http_catchall.entrypoints: web
-      traefik.http.routers.http_catchall.middlewares: redirect-to-https
+  bjbaskar_web:
+    container_name: bjbaskar_web
+    build: 
+      context: ./
+      dockerfile: bjbaskar_dockerfile
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.bjb_web.rule=Host(`bjbaskar.com`, `www.bjbaskar.com`)"
+        - "traefik.http.routers.bjb_web.entrypoints=web"
 
-      # dashboard
-      traefik.http.routers.traefik.rule: Host(`${DASHBOARD_HOST}`)
-      traefik.http.routers.traefik.entrypoints: websecure
-      traefik.http.routers.traefik.service: api@internal
-      traefik.http.routers.traefik.tls: true
-      traefik.http.routers.traefik.tls.certresolver: le
-      traefik.http.routers.traefik.tls.domains[0].main: "${HOST}"
-      traefik.http.routers.traefik.tls.domains[0].sans: "*.${HOST}"
+    expose:
+      - "3000"
+    networks:
+      - web
+    depends_on:
+      - bjb_traefik
+    restart: unless-stopped
 
-      traefik.http.routers.traefik.middlewares: dashboard
-      traefik.http.middlewares.dashboard.basicauth.users: ${DASHBOARD_USER}:${DASHBOARD_PASSWORD} # from .env
-  # # Uncomment these to test
-  # whoami:
-  #   image: containous/whoami:v1.3.0
-  #   command:
-  #     - --port=8082 # Our service listens on 8082
-  #   networks:
-  #     # Has to be in the same network as Traefik for it to work
-  #     - net
-  #     # - other # uncomment the network definition bellow
-  #   labels:
-  #     # another way of adding lebels
-  #     - "traefik.enable=true"
-  #     - "traefik.http.routers.whoami.rule=Host(`whoami.docker.localhost`)"
-  #     - "traefik.http.routers.whoami.service=whoami"
-  #     - "traefik.http.services.whoami.loadbalancer.server.port=8082"
-  #     - "traefik.http.routers.whoami.middlewares=authwhoami"
-  #     - "traefik.http.routers.whoami.entrypoints=websecure"
-  #     - "traefik.http.routers.whoami.tls.certresolver=le"
-  #     - "traefik.http.middlewares.authwhoami.basicauth.users=${DASHBOARD_USER}:${DASHBOARD_PASSWORD}" # user/pass
-  # # Use this to test
-  # whoami_too:
-  #   image: containous/whoami:v1.3.0
-  #   command:
-  #     - --port=8082 # Our service listens on 8082
-  #   networks:
-  #     # Has to be in the same network as Traefik for it to work
-  #     # - net
-  #     - other # uncomment the network definition bellow
-  #   labels:
-  #     # another way of adding lebels
-  #     - "traefik.enable=true"
-  #     - "traefik.http.routers.whoami_too.rule=Host(`whoami_too.docker.localhost`)"
-  #     - "traefik.http.routers.whoami_too.service=whoami_too"
-  #     - "traefik.http.services.whoami_too.loadbalancer.server.port=8082"
-  #     - "traefik.http.routers.whoami_too.middlewares=authwhoami_too"
-  #     - "traefik.http.routers.whoami_too.entrypoints=websecure"
-  #     - "traefik.http.routers.whoami_too.tls.certresolver=le"
-  #     - "traefik.http.middlewares.authwhoami_too.basicauth.users=${DASHBOARD_USER}:${DASHBOARD_PASSWORD}" # user/pass
-
-  # other:
-  #   external: false
-  #   name: other
-# Dashboard (https://dashboard.localhost)
-# Route
-# Basic auth (login: user | password: pass)
-# Global HTTP to HTTPS redirection (http://dashboard.localhost/)
-# Dashboard [api@internal]
-# Dashboard [api@internal] + Basic auth (login: user | password: pass)
-# Dashboard [api@internal] + TLS (https://dashboard.localhost/)
-
-# touch acme.json; chmod 600 acme.json
