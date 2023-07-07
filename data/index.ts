@@ -3,27 +3,28 @@ export const UIdata = [
   { key: "Redux", value: 80 },
   { key: "TypeScript", value: 80 },
   { key: "NextJS", value: 60 },
+
   { key: "ReactNative", value: 70 },
-  { key: "ReactNavigation", value: 70 },
-  { key: "android/iOS", value: 70 },
+  { key: "Mobile Apps - Android/iOS", value: 70 },
+
   { key: "Python FastAPI", value: 75 },
+
   { key: "NodeJS", value: 80 },
   { key: "ExpressJS", value: 80 },
-  { key: "PassportJS", value: 80 },
+
   { key: "AngularJS 1.5", value: 70 },
-  { key: "AngularJS 6+", value: 60 },
+
   { key: "GoogleCharts", value: 65 },
   { key: "HighCharts", value: 75 },
   { key: "D3JS", value: 75 },
+
   { key: "CSS", value: 99 },
-  { key: "JSS", value: 80 },
-  { key: "SASS LESS", value: 80 },
   { key: "Material UI", value: 80 },
   { key: "StyledComponents", value: 75 },
   { key: "Tailwind", value: 70 },
   { key: "Bootstrap", value: 70 },
-  { key: "CI/CD Jenkins", value: 60 },
-  { key: "AWS-EC2, S3, DS", value: 65 },
+  { key: "Docker, CI/CD Jenkins", value: 60 },
+  { key: "AWS-EC2,S3", value: 65 },
 
   { key: "MySQL", value: 95 },
   { key: "SQL Server", value: 75 },

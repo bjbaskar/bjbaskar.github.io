@@ -17,7 +17,7 @@ const TechStack: React.FC = () => {
             title={"Full Stack Dev & Mobile Apps"}
             labels={UIdata.map((d) => d.key)}
             data={UIdata.map((d) => d.value)}
-            chartoptions={{ width: 500, height: 500, label: "Web UI" }}
+            chartoptions={{ width: 700, height: 700, label: "Web UI" }}
           />
 
           <div className="flex w-full">

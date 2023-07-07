@@ -16,6 +16,14 @@ const skillsData: Array<SkillsProps> = [
     title: "Typescript",
   },
   {
+    image: "/skills/next.svg",
+    title: "Next",
+  },
+  {
+    image: "/skills/redux-store.svg",
+    title: "Redux",
+  },
+  {
     image: "/skills/nodejs.svg",
     title: "Nodejs",
   },
@@ -27,6 +35,7 @@ const skillsData: Array<SkillsProps> = [
     image: "/skills/apollo.svg",
     title: "Apollo-Graphql",
   },
+
   {
     image: "/skills/tailwindcss.svg",
     title: "Tailwindcss",
@@ -36,17 +45,22 @@ const skillsData: Array<SkillsProps> = [
     title: "MaterialUI",
   },
   {
-    image: "/skills/nest.svg",
-    title: "Nest",
+    image: "/skills/python.svg",
+    title: "Python",
   },
   {
-    image: "/skills/python.svg",
-    title: "python",
+    image: "/skills/fastapi.svg",
+    title: "FastAPI",
   },
   {
     image: "/skills/csharp.svg",
     title: "C#",
   },
+  {
+    image: "/skills/database.svg",
+    title: "MySQL",
+  },
+
   {
     image: "/skills/git.svg",
     title: "Git",
@@ -54,6 +68,18 @@ const skillsData: Array<SkillsProps> = [
   {
     image: "/skills/docker.svg",
     title: "Docker",
+  },
+  {
+    image: "/skills/android.svg",
+    title: "Android & iOS Apps",
+  },
+  {
+    image: "/skills/jenkins.svg",
+    title: "CI/CD Jenkins",
+  },
+  {
+    image: "/skills/ubuntu.svg",
+    title: "DevOps",
   },
 ];
 
@@ -78,12 +104,9 @@ const SkillsIcon: FC = () => {
       </p>
       <div className="grid justify-center grid-cols-4 md:grid-cols-6 gap-y-[10px] md:gap-y-[20px]">
         {skillsData.map((skill) => (
-          <a
+          <div
             key={skill.title}
-            href={"#"}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="item flex flex-col items-center justify-around group"
+            className="item flex flex-col items-center justify-around group cursor-pointer"
           >
             <Image
               className="w-[60px] h-[60px] transition duration-300 group-hover:scale-110"
@@ -93,7 +116,7 @@ const SkillsIcon: FC = () => {
               height={60}
             />
             <p className="text-center">{skill.title}</p>
-          </a>
+          </div>
         ))}
       </div>
     </div>
