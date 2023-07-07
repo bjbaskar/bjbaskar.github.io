@@ -1,5 +1,5 @@
 [http.middlewares.simpleAuth.basicAuth]
-users = ["admin:$apr1$ruca84Hq$mbjdMZBAG.KWn7vfN/SNK/"]
+users = ["admin:$apr1$K3OfSAhl$TJyCWgPkvDFCXTvwtmeka0"]
 
 [http.routers.api]
 rule = "Host(`monitor.bjbaskar.com`)"
@@ -8,4 +8,4 @@ middlewares = ["simpleAuth"]
 service = "api@internal"
 
 [http.routers.api.tls]
-certResolver = "lets-encrypt"
+certResolver = "myresolver"
