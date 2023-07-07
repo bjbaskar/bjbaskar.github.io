@@ -23,7 +23,7 @@ services:
       - "--certificatesresolvers.myresolver.acme.email=bjbaskar@gmail.com"
       - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
       
-      - "--providers.file.filename=traefik_secure.toml"
+      # - "--providers.file.filename=traefik_secure.toml"
       
     ports:
       - "80:80"
