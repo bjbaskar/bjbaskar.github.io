@@ -9,6 +9,7 @@ services:
   bjb_traefik:
     image: "traefik:v2.10"
     container_name: "bjb_traefik"
+    network_mode: "host"
     command:
       #- "--log.level=DEBUG"
       - "--api.dashboard=true"
