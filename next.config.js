@@ -10,6 +10,7 @@ const nextConfig = {
     unoptimized: true,
   },
   assetPrefix: isProd ? "/" : "/",
+   output: 'export'
 };
 
 module.exports = nextConfig;
