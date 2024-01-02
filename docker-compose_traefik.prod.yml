@@ -51,8 +51,8 @@ services:
 
     expose:
       - "3000"
-    networks:
-      - web
+    # networks:
+    #   - web
     depends_on:
       - bjb_traefik
     restart: unless-stopped
