@@ -110,11 +110,12 @@ export const TimelineData: Array<ITimelineData> = [
   {
     id: "2022",
     title: "Technical Architect | Full Stack Developer",
-    company: "Greater Chennai",
-    location: "India",
-    technology: "ReactJs Redux Next NodeJs Typescript GraphQL, Python - MySql",
+    company: "Biggby Coffee (EC Group International)",
+    location: "SINGAPORE",
+    technology:
+      "ReactJs Redux Next NodeJs Typescript GraphQL, Python Django FastAPI - MySql",
     domain: "Web/Mobile apps",
-    year: "2022",
+    year: "2022 - 2024",
   },
   {
     id: "2020",
@@ -124,7 +125,7 @@ export const TimelineData: Array<ITimelineData> = [
     technology:
       "ReactJS/ReactNative Redux Python-FastAPI, SQLAlchemy, GraphQL, MySql",
     domain: "Web/Mobile Applications",
-    year: "2020-2022",
+    year: "2020 - 2022",
   },
   {
     id: "2019",
@@ -134,7 +135,7 @@ export const TimelineData: Array<ITimelineData> = [
     technology:
       "ReactJs Redux NodeJs ElasticSearch D3js Charts MongoDB SqlServer OAuth2 OIDC",
     domain: "Web Applications",
-    year: "2018-2020",
+    year: "2018 - 2020",
   },
   {
     id: "2018",
@@ -171,7 +172,7 @@ export const TimelineData: Array<ITimelineData> = [
     location: "Bangalore, India",
     technology: ".Net2.0 C#",
     domain: "Product development",
-    year: "2008-2009",
+    year: "2008 - 2009",
   },
   {
     id: "2004",
@@ -181,7 +182,7 @@ export const TimelineData: Array<ITimelineData> = [
     technology:
       ".Net2.0 C# VB.Net Excel Macro XML XSLT Crystal Reports SqlServer",
     domain: "Investment Banking - Trust & Security Services",
-    year: "2003-2008",
+    year: "2003 - 2008",
   },
   {
     id: "2002",
