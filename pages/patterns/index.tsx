@@ -12,30 +12,36 @@ const PatternsPage: React.FC = () => {
           <Title title={`Design Patterns`} />
 
           <p className="w-full mx-auto p-4 mt-8">
-            My favourite Programming language is TypeScript, JavaScript & C#.
-            And my reason is that you can use it to create{" "}
-            <b>Website, Mobile app</b> and now in IoT.
+            I favor TypeScript, JavaScript, and Python as my programming
+            languages of choice. Their appeal stems from their versatility,
+            enabling me to develop applications across a spectrum that includes
+            <b> eCommerce Websites, Financial Web Apps, Mobile Apps</b>, and the
+            ever-expanding field of IoT.
             <br />
             <br />
-            Everyone likes music, even if it is just listening to music. There
-            is always a playlist of songs which helps in refreshing our mind. It
-            is the kind of a hobby I can do along with the{" "}
-            <b>patterns & best practices, clean & resuable code</b> as like I
-            listen to music while cooking, exercising, while cycling etc.
+            Exploring design patterns is like finding a treasure chest in the
+            world of making computer programs. Design patterns are more than
+            just solutions to certain coding problems; they are proven and smart
+            ways to deal with common challenges in creating software. Design
+            patterns give developers a common language to talk about solutions
+            and work together effectively.
             <br />
             <br />
-            I have listed down a few patterns that I implemented in my previous
-            projects
+            I have listed down some patterns that I integrated into my previous
+            projects.
             <br />
             <br />
-            <b>Design patterns</b> are typical solutions to commonly occurring
-            problems in software design. The patterns are not a specific piece
-            of code, but a general concept for solving a particular problem.
-            Below are the mostly used patterns with working code snippets.
+            In this adventure, we will explore the interesting world of design
+            patterns. We will learn why they are important and how they go
+            beyond just writing single lines of code.
             <br />
             <br />
-            Here’s a quick cheat sheet with code snippets for lots of design
-            patterns.
+            Understanding these patterns will not only make you better at
+            solving problems but also improve your skill in creating software
+            that can grow, change, and stay easy to manage. Come with me on this
+            journey as we uncover the secrets of design patterns, discovering
+            the mix of art and science that goes into making software that
+            lasts.
             <br />
             <br />
           </p>
