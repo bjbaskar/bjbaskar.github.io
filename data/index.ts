@@ -3,6 +3,7 @@ export const UIdata = [
   { key: "Redux", value: 80 },
   { key: "TypeScript", value: 80 },
   { key: "NextJS", value: 60 },
+  { key: "GraphQL", value: 80 },
 
   { key: "ReactNative", value: 70 },
   { key: "Mobile Apps - Android/iOS", value: 70 },

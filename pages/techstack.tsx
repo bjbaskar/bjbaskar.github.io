@@ -29,9 +29,13 @@ const TechStack: React.FC = () => {
           </div>
         </div>
 
+        <br />
+        <br />
         <div className="mt-8 mx-auto flex-wrap grid grid-cols-1 md:grid-cols-2 gap-2">
           <BarChart
-            title={"Microsoft Tech Stack"}
+            title={
+              "Microsoft Tech Stack (Engaged with these technologies until the year 2015)"
+            }
             labels={MSdata.map((d) => d.key)}
             data={MSdata.map((d) => d.value)}
             chartoptions={{

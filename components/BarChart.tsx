@@ -56,6 +56,7 @@ const BarChart: React.FC<BarChartProps> = ({
   };
 
   const options: any = {
+    aspectRatio: 1,
     indexAxis: "y" as const,
     elements: {
       bar: {
