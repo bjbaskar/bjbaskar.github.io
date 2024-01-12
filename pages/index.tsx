@@ -6,6 +6,7 @@ import Container from "../components/Container";
 import Intro from "../components/Intro";
 import SkillsIcon from "../components/SkillsIcons";
 import Aboutme from "../components/aboutme";
+import KuralCard from "../components/KuralCard";
 
 const Home: NextPage = () => {
   const containerRef = useRef(null);
@@ -27,6 +28,7 @@ const Home: NextPage = () => {
           <Intro />
           <Aboutme />
           <SkillsIcon />
+          <KuralCard />
         </Container>
       </div>
     </LocomotiveScrollProvider>
