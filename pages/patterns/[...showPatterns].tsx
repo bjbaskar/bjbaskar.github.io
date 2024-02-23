@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import ShowCodeContainer from "../../components/patterns/ShowcodeContainer";
 import {
@@ -22,20 +22,33 @@ import {
   TemplateCode,
 } from "../../components/patterns/code";
 import { VisitorCode } from "../../components/patterns/code/Visitor";
+import { PatternContext } from "../../core/patternContext";
+import { SingletonPyCode } from "../../components/patterns/pycode";
 
 export default function ShowPatternsPage() {
   const router = useRouter();
   const showPatterns = router.query.showPatterns as string;
   const [showCode, setShowCode] = useState<string>(SingletonCode);
+  const patternCtx = React.useContext(PatternContext);
 
   useEffect(() => {
+    const ctx = patternCtx.patternContext;
     const sValue = showPatterns ? showPatterns[0] : "singleton";
+
+    const handleCode = (ts_code: string, py_code: string) => {
+      if (ctx === "typescript") {
+        setShowCode(ts_code);
+      } else {
+        setShowCode(py_code);
+      }
+    };
+
     switch (sValue) {
       case "singleton":
-        setShowCode(SingletonCode);
+        handleCode(SingletonCode, SingletonPyCode);
         break;
       case "factory":
-        setShowCode(FactoryMethodCode);
+        handleCode(FactoryMethodCode, "InProgress");
         break;
       case "abstractfactory":
         setShowCode(AbstractFactoryCode);
@@ -101,11 +114,11 @@ export default function ShowPatternsPage() {
         break;
 
       default:
-        setShowCode(SingletonCode);
+        setShowCode("DEFAULT");
         break;
     }
     return () => {};
-  }, [showPatterns]);
+  }, [showPatterns, patternCtx.patternContext]);
 
   return (
     <ShowCodeContainer>

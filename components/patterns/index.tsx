@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -34,26 +34,73 @@ const patternsText: Array<IRow> = [
   { text: "Visitor" },
 ];
 
-const Row: React.FC<IRow> = ({ text }) => {
+const TOC: React.FC<IRow> = ({ text, rowNum }) => {
   const router = useRouter();
   const showPatterns = router.query.showPatterns;
-  const sValue = showPatterns ? showPatterns[0] : "singleton";
-
+  const sValue = showPatterns ? showPatterns[0] : "";
   const link = text ? text.split(" ").join("").toLowerCase().toLowerCase() : "";
-  return <Link href={`/patterns/${link}`}
-    className={sValue === link ? "text-blue-600" : "hover:text-orange-600"}>{text}</Link>;
+
+  return (
+    <li>
+      <Link
+        href={`/patterns/${link}`}
+        className="relative flex flex-row items-center h-8 focus:outline-none
+        hover:bg-gray-50 text-gray-300 hover:text-red-800 border-l-4 border-transparent
+        hover:border-indigo-500 pr-6"
+      >
+        <span
+          className={`ml-6 text-sm tracking-wider truncate 
+            ${sValue === link ? "text-blue-600" : "hover:text-orange-600"}`}
+        >
+          {text}
+        </span>
+      </Link>
+    </li>
+  );
 };
 
-const Patterns: React.FC = () => {
+const PatternsTOC: React.FC = () => {
   return (
-    <div className="divide-y-2 divide-gray-200 dark:divide-gray-700">
-      {patternsText.map((d, idx) => (
-        <div key={d.text} className="py-4">
-          <Row text={d.text} rowNum={idx + 1} />
+    <div className="flex flex-row flex-grow">
+      <div className="relative md:flex h-screen overflow-hidden w-64 ">
+        <div
+          className="h-full sidebar w-64 space-y-6 py-2 px-2 absolute inset-y-0 left-0 
+          transform -translate-x-full md:relative md:translate-x-0 transition 
+          duration-200 ease-in-out overflow-y-auto"
+        >
+          <div className="flex items-center space-x-2 px-4">
+            <svg
+              className="w-8 h-8"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+              />
+            </svg>
+            <span className="text-xl flex items-center justify-center h-10">
+              Design Patterns
+            </span>
+          </div>
+
+          <nav>
+            <ul className="flex flex-col space-y-1">
+              {patternsText.map((d, idx) => (
+                <Fragment key={idx}>
+                  <TOC text={d.text} rowNum={idx} />
+                </Fragment>
+              ))}
+            </ul>
+          </nav>
         </div>
-      ))}
+      </div>
     </div>
   );
 };
 
-export default Patterns;
+export default PatternsTOC;

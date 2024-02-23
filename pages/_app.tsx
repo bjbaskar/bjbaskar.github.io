@@ -7,6 +7,7 @@ import Head from "next/head";
 import Script from "next/script";
 import { ThemeProvider } from "next-themes";
 import { LazyMotion, domAnimation } from "framer-motion";
+import { PatternProvider } from "../core/patternContext";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -51,7 +52,9 @@ function MyApp({ Component, pageProps }: AppProps) {
 
       <LazyMotion features={domAnimation}>
         <ThemeProvider attribute="class">
-          <Component {...pageProps} />
+          <PatternProvider>
+            <Component {...pageProps} />
+          </PatternProvider>
         </ThemeProvider>
       </LazyMotion>
     </Fragment>

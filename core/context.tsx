@@ -34,7 +34,7 @@ export const ThemeProvider: React.FC<ThemeContextIndexProps> = ({
         theme.setTheme("light");
       },
     }),
-    [theme]
+    [theme, svc]
   );
 
   return (
