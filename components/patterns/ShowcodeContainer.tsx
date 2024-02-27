@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
+// import { useRouter } from "next/router";
+
 import Container from "../../components/Container";
 import PatternsTOC from "../../components/patterns";
 import ChooseLanguage from "./ChooseLang";
@@ -8,14 +10,28 @@ interface IShowcodeContainerProps {
 }
 
 const ShowCodeContainer: React.FC<IShowcodeContainerProps> = ({ children }) => {
+  // const router = useRouter();
+
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const element = document.querySelector(hash);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, []);
+
   return (
     <Container>
       <div className="h-[100px]" />
 
-      <div className="flex flex-row">
-        <PatternsTOC />
+      <div className="flex flex-col md:flex-row w-full">
+        <div className="w-full">
+          <PatternsTOC />
+        </div>
 
-        <div className="flex flex-col mx-8 w-full">
+        <div className="flex flex-col mx-8 w-full" id="chooseLanguage">
           <ChooseLanguage />
 
           <div

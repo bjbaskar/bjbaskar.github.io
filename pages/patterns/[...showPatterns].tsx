@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import type { InferGetStaticPropsType, GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
+import fs from "fs";
+import path from "path";
+
 import ShowCodeContainer from "../../components/patterns/ShowcodeContainer";
 import {
   AbstractFactoryCode,
@@ -23,9 +28,12 @@ import {
 } from "../../components/patterns/code";
 import { VisitorCode } from "../../components/patterns/code/Visitor";
 import { PatternContext } from "../../core/patternContext";
-import { SingletonPyCode } from "../../components/patterns/pycode";
 
-export default function ShowPatternsPage() {
+export default function ShowPatternsPage({
+  pyCodeContent,
+}: {
+  pyCodeContent: string;
+}) {
   const router = useRouter();
   const showPatterns = router.query.showPatterns as string;
   const [showCode, setShowCode] = useState<string>(SingletonCode);
@@ -35,20 +43,20 @@ export default function ShowPatternsPage() {
     const ctx = patternCtx.patternContext;
     const sValue = showPatterns ? showPatterns[0] : "singleton";
 
-    const handleCode = (ts_code: string, py_code: string) => {
+    const handleCode = (ts_code: string) => {
       if (ctx === "typescript") {
         setShowCode(ts_code);
       } else {
-        setShowCode(py_code);
+        setShowCode(pyCodeContent);
       }
     };
 
     switch (sValue) {
       case "singleton":
-        handleCode(SingletonCode, SingletonPyCode);
+        handleCode(SingletonCode);
         break;
       case "factory":
-        handleCode(FactoryMethodCode, "InProgress");
+        handleCode(FactoryMethodCode);
         break;
       case "abstractfactory":
         setShowCode(AbstractFactoryCode);
@@ -118,7 +126,7 @@ export default function ShowPatternsPage() {
         break;
     }
     return () => {};
-  }, [showPatterns, patternCtx.patternContext]);
+  }, [showPatterns, patternCtx.patternContext, pyCodeContent]);
 
   return (
     <ShowCodeContainer>
@@ -128,3 +136,20 @@ export default function ShowPatternsPage() {
     </ShowCodeContainer>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { params } = context;
+  const patternId = params?.showPatterns;
+
+  const filePath = path.join(
+    process.cwd(),
+    "./components/patterns/pycode/" + patternId + ".py"
+  );
+  const pyCodeContent = fs.readFileSync(filePath, "utf8");
+
+  return {
+    props: {
+      pyCodeContent,
+    },
+  };
+};

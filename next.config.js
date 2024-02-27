@@ -2,11 +2,11 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  output: 'export',
-  distDir: '_static',
+  // output: 'export',
+  distDir: "_static",
   images: {
     unoptimized: true,
   },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

@@ -9,10 +9,12 @@ const PatternsMain: React.FC = () => {
     <Container>
       <div className="h-[100px]" />
 
-      <div className="flex flex-row flex-grow">
-        <PatternsTOC />
+      <div className="flex flex-col md:flex-row w-full">
+        <div className="w-full">
+          <PatternsTOC />
+        </div>
 
-        <div className="flex flex-col px-8 w-full">
+        <div className="px-8 w-full">
           <PatternIntro />
         </div>
       </div>

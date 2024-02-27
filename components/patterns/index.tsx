@@ -43,7 +43,7 @@ const TOC: React.FC<IRow> = ({ text, rowNum }) => {
   return (
     <li>
       <Link
-        href={`/patterns/${link}`}
+        href={`/patterns/${link}#chooseLanguage`}
         className="relative flex flex-row items-center h-8 focus:outline-none
         hover:bg-gray-50 text-gray-300 hover:text-red-800 border-l-4 border-transparent
         hover:border-indigo-500 pr-6"
@@ -61,13 +61,9 @@ const TOC: React.FC<IRow> = ({ text, rowNum }) => {
 
 const PatternsTOC: React.FC = () => {
   return (
-    <div className="flex flex-row flex-grow">
+    <div className="flex flex-col flex-grow">
       <div className="relative md:flex h-screen overflow-hidden w-64 ">
-        <div
-          className="h-full sidebar w-64 space-y-6 py-2 px-2 absolute inset-y-0 left-0 
-          transform -translate-x-full md:relative md:translate-x-0 transition 
-          duration-200 ease-in-out overflow-y-auto"
-        >
+        <div className="h-full sidebar w-64 space-y-6 py-2 px-2 ease-in-out overflow-y-auto">
           <div className="flex items-center space-x-2 px-4">
             <svg
               className="w-8 h-8"

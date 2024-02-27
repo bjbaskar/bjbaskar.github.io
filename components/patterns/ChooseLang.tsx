@@ -20,7 +20,7 @@ const ChooseLanguage: React.FC = () => {
       {/* <h3 className="mb-5 text-lg font-medium text-gray-900 dark:text-white">
         How much do you expect to use each month?
       </h3> */}
-      <ul className="w-full gap-6 flex flex-row">
+      <ul className="w-full gap-3 flex flex-row">
         <li className="justify-self-center">
           <input
             type="radio"
@@ -34,7 +34,7 @@ const ChooseLanguage: React.FC = () => {
           />
           <label
             htmlFor="typescript"
-            className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
+            className="inline-flex items-center justify-between w-full p-2 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
           >
             <div className="flex flex-row items-center">
               <Image
@@ -62,7 +62,7 @@ const ChooseLanguage: React.FC = () => {
           />
           <label
             htmlFor="python"
-            className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
+            className="inline-flex items-center justify-between w-full p-2 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
           >
             <div className="flex flex-row items-center">
               <Image
