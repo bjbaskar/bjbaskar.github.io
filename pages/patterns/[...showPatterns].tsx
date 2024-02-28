@@ -39,8 +39,6 @@ export default function ShowPatternsPage({
   const [showCode, setShowCode] = useState<string>(SingletonCode);
   const patternCtx = React.useContext(PatternContext);
 
-  console.log("pyCodeContent", pyCodeContent);
-
   useEffect(() => {
     const ctx = patternCtx.patternContext;
     const sValue = showPatterns ? showPatterns[0] : "singleton";

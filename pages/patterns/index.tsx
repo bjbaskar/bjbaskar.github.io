@@ -10,7 +10,7 @@ const PatternsMain: React.FC = () => {
       <div className="h-[100px]" />
 
       <div className="flex flex-col md:flex-row w-full">
-        <div className="w-full">
+        <div className="w-64">
           <PatternsTOC />
         </div>
 
