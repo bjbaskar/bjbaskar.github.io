@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import type { InferGetStaticPropsType, GetStaticProps } from "next";
-import { GetServerSideProps } from "next";
-import fs from "fs";
-import path from "path";
 
 import ShowCodeContainer from "../../components/patterns/ShowcodeContainer";
 import {
@@ -28,12 +24,9 @@ import {
 } from "../../components/patterns/code";
 import { VisitorCode } from "../../components/patterns/code/Visitor";
 import { PatternContext } from "../../core/patternContext";
+import { SingletonPyCode } from "../../components/patterns/pycode";
 
-export default function ShowPatternsPage({
-  pyCodeContent,
-}: {
-  pyCodeContent: string;
-}) {
+export default function ShowPatternsPage() {
   const router = useRouter();
   const showPatterns = router.query.showPatterns as string;
   const [showCode, setShowCode] = useState<string>(SingletonCode);
@@ -43,7 +36,10 @@ export default function ShowPatternsPage({
     const ctx = patternCtx.patternContext;
     const sValue = showPatterns ? showPatterns[0] : "singleton";
 
-    const handleCode = (ts_code: string) => {
+    const handleCode = (
+      ts_code: string,
+      pyCodeContent: string = "In progress"
+    ) => {
       if (ctx === "typescript") {
         setShowCode(ts_code);
       } else {
@@ -53,7 +49,7 @@ export default function ShowPatternsPage({
 
     switch (sValue) {
       case "singleton":
-        handleCode(SingletonCode);
+        handleCode(SingletonCode, SingletonPyCode);
         break;
       case "factory":
         handleCode(FactoryMethodCode);
@@ -126,7 +122,7 @@ export default function ShowPatternsPage({
         break;
     }
     return () => {};
-  }, [showPatterns, patternCtx.patternContext, pyCodeContent]);
+  }, [showPatterns, patternCtx.patternContext]);
 
   return (
     <ShowCodeContainer>
@@ -136,32 +132,3 @@ export default function ShowPatternsPage({
     </ShowCodeContainer>
   );
 }
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  let pyCodeContent = "(Python) In progress";
-
-  try {
-    const { params } = context;
-    const patternId = params?.showPatterns;
-
-    const filePath = path.join(
-      process.cwd(),
-      "./components/patterns/pycode/" + patternId + ".py"
-    );
-    if (fs.existsSync(filePath)) {
-      pyCodeContent = fs.readFileSync(filePath, "utf8");
-    }
-
-    return {
-      props: {
-        pyCodeContent,
-      },
-    };
-  } catch (e) {
-    return {
-      props: {
-        pyCodeContent,
-      },
-    };
-  }
-};
