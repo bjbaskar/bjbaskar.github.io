@@ -39,6 +39,8 @@ export default function ShowPatternsPage({
   const [showCode, setShowCode] = useState<string>(SingletonCode);
   const patternCtx = React.useContext(PatternContext);
 
+  console.log("pyCodeContent", pyCodeContent);
+
   useEffect(() => {
     const ctx = patternCtx.patternContext;
     const sValue = showPatterns ? showPatterns[0] : "singleton";
@@ -59,70 +61,70 @@ export default function ShowPatternsPage({
         handleCode(FactoryMethodCode);
         break;
       case "abstractfactory":
-        setShowCode(AbstractFactoryCode);
+        handleCode(AbstractFactoryCode);
         break;
       case "builder":
-        setShowCode(BuilderCode);
+        handleCode(BuilderCode);
         break;
       case "prototype":
-        setShowCode(PrototypeCode);
+        handleCode(PrototypeCode);
         break;
 
       case "adapter":
-        setShowCode(AdapterCode);
+        handleCode(AdapterCode);
         break;
       case "bridge":
-        setShowCode(BridgeCode);
+        handleCode(BridgeCode);
         break;
       case "composite":
-        setShowCode(CompositeCode);
+        handleCode(CompositeCode);
         break;
       case "decorator":
-        setShowCode(DecoratorCode);
+        handleCode(DecoratorCode);
         break;
       case "facade":
-        setShowCode(FacadeCode);
+        handleCode(FacadeCode);
         break;
       case "flyweight":
-        setShowCode("In Progress"); // not found
+        handleCode("In Progress"); // not found
         break;
 
       case "proxy":
-        setShowCode(ProxyCode);
+        handleCode(ProxyCode);
         break;
       case "chainofresponsibility":
-        setShowCode(CORCode);
+        handleCode(CORCode);
         break;
       case "command":
-        setShowCode(CommandCode);
+        handleCode(CommandCode);
         break;
       case "iterator":
-        setShowCode(IteratorCode);
+        handleCode(IteratorCode);
         break;
       case "mediator":
-        setShowCode("In Progress"); // not found
+        handleCode("In Progress"); // not found
         break;
       case "memento":
-        setShowCode("In Progress"); // not found
+        handleCode("In Progress"); // not found
         break;
       case "observer":
-        setShowCode(ObserverCode);
+        handleCode(ObserverCode);
         break;
       case "state":
-        setShowCode(StateCode);
+        handleCode(StateCode);
         break;
       case "strategy":
-        setShowCode(StrategyCode);
+        handleCode(StrategyCode);
         break;
       case "templatemethod":
-        setShowCode(TemplateCode);
+        handleCode(TemplateCode);
         break;
       case "visitor":
-        setShowCode(VisitorCode);
+        handleCode(VisitorCode);
         break;
 
       default:
-        setShowCode("DEFAULT");
+        handleCode("DEFAULT");
         break;
     }
     return () => {};
@@ -138,18 +140,30 @@ export default function ShowPatternsPage({
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { params } = context;
-  const patternId = params?.showPatterns;
+  let pyCodeContent = "(Python) In progress";
 
-  const filePath = path.join(
-    process.cwd(),
-    "./components/patterns/pycode/" + patternId + ".py"
-  );
-  const pyCodeContent = fs.readFileSync(filePath, "utf8");
+  try {
+    const { params } = context;
+    const patternId = params?.showPatterns;
 
-  return {
-    props: {
-      pyCodeContent,
-    },
-  };
+    const filePath = path.join(
+      process.cwd(),
+      "./components/patterns/pycode/" + patternId + ".py"
+    );
+    if (fs.existsSync(filePath)) {
+      pyCodeContent = fs.readFileSync(filePath, "utf8");
+    }
+
+    return {
+      props: {
+        pyCodeContent,
+      },
+    };
+  } catch (e) {
+    return {
+      props: {
+        pyCodeContent,
+      },
+    };
+  }
 };

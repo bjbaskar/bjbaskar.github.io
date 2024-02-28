@@ -24,14 +24,14 @@ const ShowCodeContainer: React.FC<IShowcodeContainerProps> = ({ children }) => {
 
   return (
     <Container>
-      <div className="h-[100px]" />
+      <div className="h-[100px]" id="chooseLanguage" />
 
       <div className="flex flex-col md:flex-row w-full">
-        <div className="w-full">
+        <div className="w-64">
           <PatternsTOC />
         </div>
 
-        <div className="flex flex-col mx-8 w-full" id="chooseLanguage">
+        <div className="flex flex-col mx-8 w-full">
           <ChooseLanguage />
 
           <div
