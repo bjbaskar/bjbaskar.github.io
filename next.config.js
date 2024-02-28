@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  output: "server",
+  output: "standalone",
   distDir: "build",
   images: {
     unoptimized: true,
