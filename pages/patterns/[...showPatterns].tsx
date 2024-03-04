@@ -24,7 +24,10 @@ import {
 } from "../../components/patterns/code";
 import { VisitorCode } from "../../components/patterns/code/Visitor";
 import { PatternContext } from "../../core/patternContext";
-import { SingletonPyCode } from "../../components/patterns/pycode";
+import {
+  FactoryPyCode,
+  SingletonPyCode,
+} from "../../components/patterns/pycode";
 
 export default function ShowPatternsPage() {
   const router = useRouter();
@@ -52,7 +55,7 @@ export default function ShowPatternsPage() {
         handleCode(SingletonCode, SingletonPyCode);
         break;
       case "factory":
-        handleCode(FactoryMethodCode);
+        handleCode(FactoryMethodCode, FactoryPyCode);
         break;
       case "abstractfactory":
         handleCode(AbstractFactoryCode);

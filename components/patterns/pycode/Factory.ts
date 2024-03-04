@@ -1,3 +1,4 @@
+export const FactoryPyCode = `
 from abc import ABC, abstractmethod
 import json
 import random
@@ -87,3 +88,4 @@ for cr in execute_client(5):
     i_count += 1
     print("Id = {0}".format(i_count))
     print(cr.doValidate())
+`;
