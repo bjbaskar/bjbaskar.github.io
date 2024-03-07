@@ -25,6 +25,7 @@ import {
 import { VisitorCode } from "../../components/patterns/code/Visitor";
 import { PatternContext } from "../../core/patternContext";
 import {
+  BuilderPyCode,
   FactoryPyCode,
   SingletonPyCode,
 } from "../../components/patterns/pycode";
@@ -61,7 +62,7 @@ export default function ShowPatternsPage() {
         handleCode(AbstractFactoryCode);
         break;
       case "builder":
-        handleCode(BuilderCode);
+        handleCode(BuilderCode, BuilderPyCode);
         break;
       case "prototype":
         handleCode(PrototypeCode);
